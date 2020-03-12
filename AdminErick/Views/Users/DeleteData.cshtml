@@ -1,0 +1,31 @@
+﻿@model AdminErick.Models.Entities.users.UserEdit
+
+<div class="col-md-8">
+
+    <div class="card card-user">
+        <div class="image">
+            <img src="~/Content/assets/img/damir-bosnjak.jpg" alt="...">
+        </div>
+            <div class="card-header">
+                <h4 class="card-title">Eliminar</h4>
+            </div>
+
+            <p style="margin-left:20px">¿Quieres eliminar a <strong> @Model.UserName </strong>?</p>
+
+            @using (Ajax.BeginForm("DeleteDataAjax", "Users",
+
+                new AjaxOptions()
+                {
+                    HttpMethod = "POST",
+                    Confirm = "Success"
+                }))
+            {
+                <input type="hidden" value="@Model.Id" name="Id" />
+                <input class="btn btn-danger" type="submit" value="Eliminar" name="btn-delete-ajax" style="margin-left:20px"/>
+            }
+            <br />
+    </div>
+    <p>
+        @Html.ActionLink("Regresar al listado", "Index")
+    </p>
+</div>

@@ -1,0 +1,73 @@
+﻿@{
+    @model IEnumerable<AdminErick.Models.Entities.users.UserShowList>
+    ViewBag.Title = "Index";
+}
+<div style="text-align:right; padding:unset;">
+    <p>
+        <a class="btn btn-success" href="~/Users/AddNew">Añadir Nuevo Usuario</a>
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"> Lista de Usuarios</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+
+                        <thead class="text-primary">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.IdUser)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UserName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.RolName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.MembershipName)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdUser)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RolName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MembershipName)
+                                    </td>
+                                    <td>
+                                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })*@
+                                        <a class="btn btn-primary" href="~/Users/EditData/@item.IdUser">Editar</a>
+                                        @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })*@
+                                        <a class="btn btn-info" href="~/Users/ViewDetail/@item.IdUser">Detalle</a>
+                                        @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                                        <a class="btn btn-danger" href="~/Users/DeleteData/@item.IdUser">Eliminar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

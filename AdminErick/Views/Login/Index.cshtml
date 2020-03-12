@@ -1,0 +1,52 @@
+﻿@model AdminErick.Models.Entities.users.UserLogin
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+    <div class="row"
+         style="display: flex;
+          justify-content: center;
+          align-items: center;">
+        <div class="card card-user col-md-6"
+             style="initial-letter-align:inherit; margin-top:50px;">
+            <div class="image">
+                <img src="~/Content/assets/img/header.jpg" alt="...">
+            </div>
+            <div class="card-header">
+                <h4 class="card-title">Bienvenido</h4>
+            </div>
+            <div class="card-body">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-10" })
+                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-10" })
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <p style="margin-left:20px">¿Olvidaste tu contraseña, contactate con el adminstrador?</p>
+                    <input class="btn btn-primary" type="submit" value="Sing Up" style="margin: auto; display: block; padding-left:75px; padding-right:75px;" />
+                    <br />
+                }
+            </div>
+        </div>
+
+    </div>
